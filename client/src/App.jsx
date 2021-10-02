@@ -1,13 +1,12 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import './App.css'
-import Content from "./components/Content"
-import Auth from "./components/Auth"
-import {BrowserRouter, Switch, Route} from "react-router-dom"
+import Content from "./pages/main/Content/Content"
+import Auth from "./pages/admin/Auth/Auth"
+import {BrowserRouter, Route, Switch} from "react-router-dom"
 import {useHttp} from "./hooks/http.hook"
-import AdminPanel from "./components/AdminPanel"
-import {Snow} from "./components/Snow";
-import {Banner} from "./components/Banner";
-import Header from "./components/Header";
+import AdminPanel from "./pages/admin/AdminPanel/AdminPanel"
+import AboutItem from "./pages/about/AboutItem/AboutItem";
+import Basket from "./pages/basket/Basket/Basket";
 
 
 let fetchedCompanies = []
@@ -15,6 +14,7 @@ let fetchedCompanies = []
 function App() {
 
     const [companies, setCompanies] = useState(fetchedCompanies)
+    const [someShit, setSomeShit] = useState(false)
     const {request} = useHttp()
 
     const fetchCompanies = useCallback(async () => {
@@ -44,31 +44,32 @@ function App() {
     }
 
     return (
-        <div /*className={'banner__grid'}*/>
-            {/*<Banner/>*/}
+        <div>
             <BrowserRouter>
-                {/*<div className={'container'}>*/}
                     <div className={'app'}>
-                        {/*<Snow/>*/}
-                        {/*<Header searchText={searchText}/>*/}
                         <Switch>
                             <Route exact path={"/"}
                                    render={() => <Content companies={companies}
                                                           searchText={searchText}
+                                                          setSomeShit={setSomeShit}
+                                                          someShit={someShit}
                                        />}
+                            />
+                            <Route exact path={"/about/:anchorr"}
+                                   render={() => <AboutItem />}
+                            />
+                            <Route exact path={"/basket"}
+                                   render={() => <Basket someShit={someShit} steSomeShit={setSomeShit}/>}
                             />
                             <Route exact path={"/admin"}
                                    render={() => <Auth/>}
                             />
                             <Route exact path={"/admin/panel"}
-                                   render={() => <AdminPanel companies={companies}/>}
+                                   render={() => <AdminPanel companies={companies} fetchCompanies={fetchCompanies}/>}
                             />
                         </Switch>
                     </div>
-                {/*</div>*/}
             </BrowserRouter>
-             {/*<div className={'banner_right'}>*/}
-             {/*</div>*/}
         </div>
     )
 }

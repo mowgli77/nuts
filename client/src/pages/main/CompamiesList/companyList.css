@@ -1,0 +1,35 @@
+.companies__sort {
+    margin-bottom: 25px;
+    color: whitesmoke;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.companies__sort span {
+    margin-right: 30px;
+}
+.companies__sort_active {
+    color: #ff1500;
+}
+.companies__sort span:hover {
+    color: darkorange;
+}
+.companies-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 30px;
+}
+.companies-list-less-then-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
+    grid-gap: 60px;
+}
+
+@media (max-width: 767px) {
+    .companies-list {
+        grid-gap: 30px;
+    }
+}

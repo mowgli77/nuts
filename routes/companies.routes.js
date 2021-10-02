@@ -19,11 +19,14 @@ router.get('/',
 router.post('/save',
     async (req, res) => {
         try {
-            const { image, name, href, anchorr, description } = req.body
-            const company = new Company({ image, name, href, anchorr, description })
+            const { image, name, price, anchorr, description, addFields } = req.body
+            const company = new Company({ image, name, price, anchorr, description, addFields })
+            // const company = new Company;
+            // company.data = JSON.stringify(req.body);
             await company.save()
             res.status(201).json({
-                message: 'Company is successfully added'
+                message: 'Company is successfully added',
+                status: 'success'
             })
         }
         catch (e) {
@@ -39,7 +42,8 @@ router.delete('/delete',
             const id = req.body.id
             await Company.findByIdAndDelete(id)
             res.json({
-                message: 'Company was successfully deleted'
+                message: 'Company was successfully deleted',
+                status: 'success'
             })
         }
         catch (e) {
@@ -60,7 +64,8 @@ router.post('/update',
                 { new: true }
                 )
             res.status(200).json({
-                message: 'Company was successfully updated'
+                message: 'Company was successfully updated',
+                status: 'success'
             })
         }
         catch (e) {

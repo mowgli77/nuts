@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {useHttp} from "../hooks/http.hook"
-import {useAuth} from "../hooks/auth.hook"
+import {useHttp} from "../../../hooks/http.hook"
+import {useAuth} from "../../../hooks/auth.hook"
 import {Redirect} from "react-router-dom"
 
 const Auth = () => {
@@ -58,7 +58,7 @@ const Auth = () => {
                 />
                 <div>
                     <button onClick={loginHandler}>Login</button>
-                    <button disabled={true} onClick={registerHandler}>Register</button>
+                    <button disabled={false} onClick={registerHandler}>Register</button>
                 </div>
             </div>
         </div>

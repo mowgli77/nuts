@@ -1,16 +1,17 @@
 import React from 'react'
-import {useHttp} from "../hooks/http.hook"
+import {useHttp} from "../../hooks/http.hook"
 
-const DeleteModal = ({onCancel, company}) => {
+const DeleteModal = ({onCancel, company, fetchCompanies}) => {
 
     const { request } = useHttp()
 
     const deleteCompanyHandler = async () => {
         try {
             const data = await request('/api/companies/delete', 'DELETE', { id: company._id})
-            console.log(data.message)
-            console.log()
             onCancel()
+            if (data.status === 'success') {
+                fetchCompanies()
+            }
         } catch (e) {
         }
     }
