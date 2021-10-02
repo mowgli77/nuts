@@ -1,0 +1,34 @@
+.basket_title{
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.basket_content {
+    display: flex;
+    flex-direction: column;
+}
+.basket_header {
+    display: grid;
+    grid-template-areas: 'item price count total delete';
+    grid-template-columns: 5fr repeat(3, 2fr) 1fr;
+    grid-template-rows: 60px;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #211e1e;
+    justify-items: center;
+    align-items: center;
+    color: whitesmoke;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.basket_buttons {
+    align-self: flex-end;
+    margin-right: 5px;
+    margin-top: 15px;
+}
+.basket_buttons button {
+    padding: 10px 45px;
+    border-radius: 25px;
+    margin-left: 20px;
+}

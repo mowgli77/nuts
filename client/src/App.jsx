@@ -59,7 +59,7 @@ function App() {
                                    render={() => <AboutItem />}
                             />
                             <Route exact path={"/basket"}
-                                   render={() => <Basket someShit={someShit} steSomeShit={setSomeShit}/>}
+                                   render={() => <Basket someShit={someShit} setSomeShit={setSomeShit}/>}
                             />
                             <Route exact path={"/admin"}
                                    render={() => <Auth/>}

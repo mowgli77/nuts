@@ -10,6 +10,8 @@
 @import url('components/DynamicFields/DynamicField/dynamicField.css');
 @import url('./utils/swal/swal.css');
 @import url('./components/FormFields/formFields.css');
+@import url('./pages/basket/Basket/BasketItem/basketItem.css');
+@import url('./pages/basket/Basket/basket.css');
 
 
 

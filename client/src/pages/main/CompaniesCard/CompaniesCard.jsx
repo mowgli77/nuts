@@ -6,9 +6,9 @@ const CompaniesCard = ({company, someShit, setSomeShit}) => {
     const addItemToBasket = (company) => {
         const basket = localStorage.getItem('basket');
         const parsedBasket = basket ? JSON.parse(basket) : {}
-        console.log(parsedBasket)
         const items = {
             ...parsedBasket, [company.name]: {
+                image: company.image,
                 name: company.name,
                 price: company.price
             }
@@ -28,7 +28,7 @@ const CompaniesCard = ({company, someShit, setSomeShit}) => {
                     {company.description}
                 </div>
                 <div className={`companies-card__label`}>
-                    {company.name}: {company.price} грн.
+                    <div>{company.name}</div> <div>{company.price} грн.</div>
                 </div>
             </NavLink>
             <button onClick={() => addItemToBasket(company)}>Купить</button>
