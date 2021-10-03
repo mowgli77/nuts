@@ -15,7 +15,7 @@ import Close from "@material-ui/icons/Close";
 const useStyles = makeStyles((theme) => ({
         iconButton: {
             minWidth: 35,
-            marginTop: '-8px',
+            marginTop: '-17px',
             float: 'right',
         },
         icon: {
@@ -36,7 +36,8 @@ const UpdateCompanyModal = ({   onCancel,
     const [form, setForm] = useState({
         image: company.image,
         name: company.name,
-        price: company.href,
+        price: company.price,
+        points: company.points,
         anchorr: company.anchorr,
         description: company.description,
     });
@@ -60,7 +61,7 @@ const UpdateCompanyModal = ({   onCancel,
             const data = await request('/api/companies/update', 'POST', {
                 ...form,
                 addFields,
-                price: Number(form.price).toFixed(2)
+                id: company._id
             });
             onCancel();
             if (data.status === 'success') {

@@ -5,23 +5,18 @@ import {NavLink, Redirect} from "react-router-dom";
 import CompanyRemastering from "../CompanyRemastering/CompanyRemastering"
 import UpdateCompanyModal from "../../../components/modals/UpdateCompanyModal";
 import DeleteModal from "../../../components/modals/DeleteModal";
-import {
-    fileSelectorHandler,
-    getAddFieldsObject,
-    getStringFromFile,
-    resetFormsStateHelper
-} from "../../../utils/helpers";
-import {uploadImageToImgur} from "../../../utils/imgur";
+import {fileSelectorHandler, getAddFieldsObject, resetFormsStateHelper} from "../../../utils/helpers";
 import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
 import {DynamicFields} from "../../../components/DynamicFields/DynamicFields";
 import {FormFields} from "../../../components/FormFields/FormFields";
 import {adminPages} from "../../../constants/constants";
 import {AdminPagesSwitcher} from "./AdminPagesSwitcher";
+import {Orders} from "../../orders/Orders";
 
 
 const AdminPanel = ({companies, fetchCompanies}) => {
 
-    const [switchMode, setSwitchMode] = useState(adminPages.ADD_NEW_ITEM)
+    const [switchMode, setSwitchMode] = useState(adminPages.ORDERS_LIST)
     const [isModalUpdate, setModalUpdate] = useState(false)
     const [isModalDelete, setModalDelete] = useState(false)
     const [dynamicKeysForm, setDynamicKeysForm] = useState({})
@@ -59,8 +54,7 @@ const AdminPanel = ({companies, fetchCompanies}) => {
         try {
             const data = await request('/api/companies/save', 'POST', {
                 ...form,
-                addFields,
-                price: Number(form.price).toFixed(2)
+                addFields
             })
             setForm(resetFormsStateHelper);
             setDynamicKeysForm(resetFormsStateHelper);
@@ -131,6 +125,9 @@ const AdminPanel = ({companies, fetchCompanies}) => {
                             />)}
                         </div>
                     </div>}
+                    {
+                        switchMode === adminPages.ORDERS_LIST && <Orders />
+                    }
                 </div>
             </div>}
         </div>

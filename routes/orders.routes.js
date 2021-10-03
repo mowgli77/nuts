@@ -1,13 +1,13 @@
-const { Router } = require('express')
-const Company = require('../models/Company')
+const { Router } = require('express');
+const Order = require('../models/Order');
 
-const router = Router()
+const router = Router();
 
 router.get('/',
     async (req, res) => {
         try {
-            const companies = await Company.find({})
-            res.json(companies)
+            const orders = await Order.find({})
+            res.json(orders)
         }
         catch (e) {
             res.status(500).json({
@@ -19,13 +19,11 @@ router.get('/',
 router.post('/save',
     async (req, res) => {
         try {
-            const { image, name, price, points, anchorr, description, addFields } = req.body
-            const company = new Company({ image, name, price, points, anchorr, description, addFields })
-            // const company = new Company;
-            // company.data = JSON.stringify(req.body);
+            const { firstName, lastName, email, phone, total, address, active, items } = req.body
+            const company = new Order({ firstName, lastName, email, phone, total, active, address, items })
             await company.save()
             res.status(201).json({
-                message: 'Company is successfully added',
+                message: 'Order is successfully added',
                 status: 'success'
             })
         }
@@ -40,9 +38,9 @@ router.delete('/delete',
     async (req, res) => {
         try {
             const id = req.body.id
-            await Company.findByIdAndDelete(id)
+            await Order.findByIdAndDelete(id)
             res.json({
-                message: 'Company was successfully deleted',
+                message: 'Order was successfully deleted',
                 status: 'success'
             })
         }
@@ -56,14 +54,14 @@ router.delete('/delete',
 router.post('/update',
     async (req, res) => {
         try {
-            const { id, image, name, price, points, anchorr, description, addFields } = req.body
-            await Company.findByIdAndUpdate(
+            const { id, firstName, lastName, email, phone, address, total, active, items } = req.body
+            await Order.findByIdAndUpdate(
                 id,
-                { $set: { image, name, price, points, anchorr, description, addFields } },
+                { $set: { firstName, lastName, email, phone, address, total, active, items } },
                 { new: true }
                 )
             res.status(200).json({
-                message: 'Company was successfully updated',
+                message: 'Order was successfully updated',
                 status: 'success'
             })
         }

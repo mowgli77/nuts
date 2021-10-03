@@ -5,11 +5,12 @@ import {IconButton, makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
         headerIcon: {
-            minWidth: 40,
+            minWidth: 50,
             marginLeft: 30,
+            backgroundColor: 'rgba(0,0,0,0.3)',
         },
         basketIcon: {
-            fontSize: 40,
+            fontSize: 50,
             color: 'green',
         },
     })
@@ -25,7 +26,8 @@ const Header = ({searchText}) => {
 
     const itemsCount = localStorage.getItem('items')
 
-    useEffect(() => {}, [itemsCount])
+    useEffect(() => {
+    }, [itemsCount])
 
     // useEffect(() => {
     //     if (location.hash) {
@@ -61,14 +63,16 @@ const Header = ({searchText}) => {
                 <div className={"header__search"}>
                     <input placeholder={'Поиск товаров'} type={'text'} onKeyUp={searchText}/>
                     <div className={"header__icon"}>
+                        <div className={"header__icon_fixed"}>
                         <span className={"header__inbasket"}>
                             {itemsCount ? itemsCount : ''}
                         </span>
-                        <NavLink to={'/basket'}>
-                            <IconButton className={headerIcon}>
-                                <ShoppingBasket className={basketIcon}/>
-                            </IconButton>
-                        </NavLink>
+                            <NavLink to={'/basket'}>
+                                <IconButton className={headerIcon}>
+                                    <ShoppingBasket className={basketIcon}/>
+                                </IconButton>
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

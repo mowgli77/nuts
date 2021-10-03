@@ -26,13 +26,24 @@ export const FormFields = ({form, formHandler, fileSelectorHandler}) => {
                    value={form.name}
                    onChange={formHandler}
             />
-            <input placeholder="Enter a price"
-                   id="price"
-                   type="text"
-                   name={"price"}
-                   value={form.price}
-                   onChange={formHandler}
-            />
+            <div className="dynamic_field">
+                <input className="dynamic_field__item"
+                       placeholder="Enter a price"
+                       id="price"
+                       type="text"
+                       name={"price"}
+                       value={form.price}
+                       onChange={formHandler}
+                />
+                <input className="dynamic_field__item"
+                       placeholder="Enter points of item"
+                       id="points"
+                       type="text"
+                       name={"points"}
+                       value={form.points}
+                       onChange={formHandler}
+                />
+            </div>
             <input placeholder="Enter an anchor"
                    id="anchorr"
                    type="text"

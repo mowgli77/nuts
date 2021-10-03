@@ -1,28 +1,14 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
+import {addItemToBasket} from "../../../utils/helpers";
 
 const CompaniesCard = ({company, someShit, setSomeShit}) => {
-
-    const addItemToBasket = (company) => {
-        const basket = localStorage.getItem('basket');
-        const parsedBasket = basket ? JSON.parse(basket) : {}
-        const items = {
-            ...parsedBasket, [company.name]: {
-                image: company.image,
-                name: company.name,
-                price: company.price
-            }
-        }
-        localStorage.setItem('basket', JSON.stringify(items))
-        localStorage.setItem('items', Object.keys(items).length)
-        setSomeShit(!someShit)
-    }
 
     return (
         <div id={company.anchorr} className={"companies-card"}>
             <NavLink to={`/about/${company.anchorr}`}>
                 <div className={`companies-card__image ${!company.description && 'boss'}`}>
-                    <img src={company.image}/>
+                    <img src={company.image} alt='image'/>
                 </div>
                 <div className={`companies-card__description ${company.description && 'boss'}`}>
                     {company.description}
@@ -31,7 +17,7 @@ const CompaniesCard = ({company, someShit, setSomeShit}) => {
                     <div>{company.name}</div> <div>{company.price} грн.</div>
                 </div>
             </NavLink>
-            <button onClick={() => addItemToBasket(company)}>Купить</button>
+            <button onClick={() => addItemToBasket(company, someShit, setSomeShit)}>Купить</button>
         </div>
     )
 }

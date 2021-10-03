@@ -50,3 +50,21 @@ export const getInitDynamicValuesForm = (company) => {
     }
     return {};
 };
+
+export const addItemToBasket = (item, someShit, setSomeShit) => {
+    const basket = localStorage.getItem('basket');
+    const parsedBasket = basket ? JSON.parse(basket) : {};
+    const items = {
+        ...parsedBasket, [item.name]: {
+            image: item.image,
+            name: item.name,
+            price: item.price,
+            points: item.points,
+            count: 1,
+            total: item.price,
+        }
+    };
+    localStorage.setItem('basket', JSON.stringify(items));
+    localStorage.setItem('items', Object.keys(items).length);
+    setSomeShit(!someShit);
+};

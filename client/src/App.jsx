@@ -7,6 +7,8 @@ import {useHttp} from "./hooks/http.hook"
 import AdminPanel from "./pages/admin/AdminPanel/AdminPanel"
 import AboutItem from "./pages/about/AboutItem/AboutItem";
 import Basket from "./pages/basket/Basket/Basket";
+import {AdminBasket} from "./pages/admin/AdminPanel/AdminBasket/AdminBasket";
+import {AdminBasketContextProvider} from "./context/AdminBasketContext";
 
 
 let fetchedCompanies = []
@@ -46,6 +48,7 @@ function App() {
     return (
         <div>
             <BrowserRouter>
+                <AdminBasketContextProvider>
                     <div className={'app'}>
                         <Switch>
                             <Route exact path={"/"}
@@ -67,8 +70,15 @@ function App() {
                             <Route exact path={"/admin/panel"}
                                    render={() => <AdminPanel companies={companies} fetchCompanies={fetchCompanies}/>}
                             />
+                            <Route exact path={"/admin/panel/admin_basket"}
+                                   render={() => <AdminBasket someShit={someShit}
+                                                              setSomeShit={setSomeShit}
+                                                              companies={companies}
+                                   />}
+                            />
                         </Switch>
                     </div>
+                </AdminBasketContextProvider>
             </BrowserRouter>
         </div>
     )
