@@ -21,7 +21,7 @@ export const fileSelectorHandler = (setForm) => (files) => {
         .then((str) => uploadImageToImgur(str))
         .then((res) => {
             if (res.data.status === 200) {
-                setForm({image: res.data.data.link});
+                setForm(prev => ({...prev, image: res.data.data.link}));
             }
         });
 };
