@@ -15,9 +15,10 @@ let fetchedCompanies = []
 
 function App() {
 
-    const [companies, setCompanies] = useState(fetchedCompanies)
-    const [someShit, setSomeShit] = useState(false)
-    const {request} = useHttp()
+    const [companies, setCompanies] = useState(fetchedCompanies);
+    const [item, setItem] = useState(fetchedCompanies);
+    const [someShit, setSomeShit] = useState(false);
+    const {request} = useHttp();
 
     const fetchCompanies = useCallback(async () => {
         const data = await request('/api/companies')
@@ -43,7 +44,12 @@ function App() {
         } else {
             setCompanies(filterCompanies)
         }
-    }
+    };
+
+    const getItemForAboutPage = (item) => {
+        console.log(item);
+        setItem(item);
+    };
 
     return (
         <div>
@@ -56,10 +62,11 @@ function App() {
                                                           searchText={searchText}
                                                           setSomeShit={setSomeShit}
                                                           someShit={someShit}
+                                                          getItemForAboutPage={getItemForAboutPage}
                                        />}
                             />
                             <Route exact path={"/about/:anchorr"}
-                                   render={() => <AboutItem />}
+                                   render={() => <AboutItem item={item} someShit={someShit} setSomeShit={setSomeShit}/>}
                             />
                             <Route exact path={"/basket"}
                                    render={() => <Basket someShit={someShit} setSomeShit={setSomeShit}/>}

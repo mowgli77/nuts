@@ -1,17 +1,18 @@
 import React, {useEffect, useState, useRef} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
 import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
+import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import {IconButton, makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
         headerIcon: {
             minWidth: 50,
             marginLeft: 30,
-            backgroundColor: 'rgba(0,0,0,0.3)',
+            backgroundColor: 'rgba(0,0,0,0.4)',
         },
         basketIcon: {
             fontSize: 50,
-            color: 'green',
+            color: '#bdb5b5',
         },
     })
 )
@@ -69,7 +70,7 @@ const Header = ({searchText}) => {
                         </span>
                             <NavLink to={'/basket'}>
                                 <IconButton className={headerIcon}>
-                                    <ShoppingBasket className={basketIcon}/>
+                                    <ShoppingCart className={basketIcon}/>
                                 </IconButton>
                             </NavLink>
                         </div>
