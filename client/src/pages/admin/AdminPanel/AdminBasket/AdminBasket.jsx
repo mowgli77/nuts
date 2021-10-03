@@ -93,7 +93,7 @@ export const AdminBasket = ({someShit, setSomeShit, companies}) => {
                                 color='primary'
                                 startIcon={openStore ? <ExpandLess/> : <ExpandMore />}
                                 onClick={() => setOpenStore(!openStore)}>
-                            Open Store
+                            {openStore ? 'Close' : 'Open'} Store
                         </Button>
                         <Button variant='contained' color='primary' onClick={() => setOrderModalOpen(true)}>
                             Update Order
