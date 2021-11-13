@@ -54,8 +54,11 @@
 }
 
 @media (max-width: 767px) {
+    .basket_go-back-button {
+        top: 25px;
+    }
     .basket_title{
-        margin-top: 90px;
+        margin-top: 75px;
         font-size: 1.5rem;
     }
     .basket_header {
@@ -75,7 +78,7 @@
     }
     .basket_buttons button {
         padding: 10px;
-        margin-left: 10px;
+        margin-left: 5px;
         font-size: 0.75rem;
     }
 }
