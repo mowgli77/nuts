@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
         },
         phoneIconButton: {
             position: 'absolute',
-            minWidth: 40,
+            minWidth: 25,
             backgroundColor: 'rgba(0,0,0,0.4)',
         },
         phoneIcon: {
-            fontSize: 40,
+            fontSize: 25,
             color: '#c7ec7c',
         }
     })
@@ -103,7 +103,7 @@ const Header = ({searchText}) => {
                     Завітайте до нас за адресою:
                     <a href="https://maps.app.goo.gl/m7H8jk5311XCQxrT9" target="_blank"> вул. Героїв Дніпра, 51, Київ,
                         02000 (дивитись на карті) </a>
-                    або ми доставимо Вам товари по Києву си у будь-яку іншу точку України
+                    або ми доставимо Вам товари по Києву чи у будь-яку іншу точку України
                     <div className="header__delivery">
                         <NavLink to="/delivery">
                             Ознайомитись з умовами оплати та доставки

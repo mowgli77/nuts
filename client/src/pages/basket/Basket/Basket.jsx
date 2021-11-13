@@ -84,7 +84,7 @@ const Basket = ({someShit, setSomeShit}) => {
                     <div className='basket_total'>
                         <div/>
                         <div/>
-                        <div>Total:</div>
+                        <div>Всього:</div>
                         <div>{total} грн</div>
                     </div>
                     <div className="basket_buttons">

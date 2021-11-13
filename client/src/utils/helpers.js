@@ -1,4 +1,5 @@
 import {uploadImageToImgur} from "./imgur";
+import {swalWithCustom} from "./swal/swalWithCustom";
 
 export const getStringFromFile = (files)=> {
     return new Promise((resolve) => {
@@ -67,4 +68,11 @@ export const addItemToBasket = (item, someShit, setSomeShit) => {
     localStorage.setItem('basket', JSON.stringify(items));
     localStorage.setItem('items', Object.keys(items).length);
     setSomeShit(!someShit);
+    swalWithCustom.fire({
+        text: 'Товар успішно доданий в корзину!',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1000
+    });
 };
+
