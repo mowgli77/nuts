@@ -101,9 +101,11 @@ export const BasketItem = ({item, someShit, setSomeShit}) => {
                 </IconButton>
             </div>
             <div>{Number(item.total).toFixed(2)} грн</div>
-            <IconButton className={iconButton} onClick={removeItemHandler}>
-                <Cancel className={iconDecrease}/>
-            </IconButton>
+            <div className="basket_item__cancel_button">
+                <IconButton className={iconButton} onClick={removeItemHandler}>
+                    <Cancel className={iconDecrease}/>
+                </IconButton>
+            </div>
         </div>
     );
 }

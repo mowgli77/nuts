@@ -72,6 +72,7 @@
 
 @media (max-width: 767px) {
     .modal__window {
+        margin-top: 90px;
         padding: 0;
     }
 }

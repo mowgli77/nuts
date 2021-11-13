@@ -37,3 +37,13 @@
 .btn-cancel:hover {
     background-color: #af391d;
 }
+
+@media (max-width: 767px) {
+    .swal-container .swal2-popup {
+        width: 345px;
+        margin-left: -15px;
+    }
+    .swal-container button{
+        min-width: 100px;
+    }
+}

@@ -25,10 +25,10 @@
 .header__phone {
     margin-top: 3px;
 }
-.header__phone a{
+.header__phone a {
     display: flex;
 }
-.header__phone .header__phone_number{
+.header__phone_number {
     position: relative;
     margin-top: 10px;
     margin-left: 5px;
@@ -55,7 +55,7 @@
 .header__title a {
     letter-spacing: 0px;
 }
-.header__title .header__delivery {
+.header__delivery {
     margin: 10px 0;
 }
 .header__between {
@@ -137,7 +137,7 @@
     .header__top {
         flex-direction: column-reverse;
         align-items: center;
-        margin: 10px;
+        margin: 10px 10px 10px 0;
     }
     .header__icon {
         margin-left: -25px;
@@ -149,11 +149,12 @@
         margin-left: 10px;
     }
     .header__title {
-        font-size: 1rem;
+        font-size: 0.85rem;
+        line-height: 1.125rem;
         margin-left: 10px;
     }
-    .header__phone a {
-        font-size: 1.6rem;
+    .header__phone {
+        margin-left: -45px;
     }
     .header__search {
         justify-content: normal;

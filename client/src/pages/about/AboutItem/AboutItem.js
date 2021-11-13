@@ -10,7 +10,7 @@ const AboutItem = ({ item = {}, someShit, setSomeShit, getItemForAboutPage }) =>
 
     useEffect(() => {
         getItemForAboutPage(anchorr)
-    }, [anchorr])
+    }, [anchorr, item])
 
     return (
         <div className='about_item'>

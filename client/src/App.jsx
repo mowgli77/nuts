@@ -9,6 +9,7 @@ import AboutItem from "./pages/about/AboutItem/AboutItem";
 import Basket from "./pages/basket/Basket/Basket";
 import {AdminBasket} from "./pages/admin/AdminPanel/AdminBasket/AdminBasket";
 import {AdminBasketContextProvider} from "./context/AdminBasketContext";
+import Delivery from "./pages/delivery/Delivery/Delivery";
 
 
 let fetchedCompanies = []
@@ -70,6 +71,9 @@ function App() {
                                        getItemForAboutPage={getItemForAboutPage}
                                        someShit={someShit}
                                        setSomeShit={setSomeShit}/>}
+                            />
+                            <Route exact path={"/delivery"}
+                                   render={() => <Delivery />}
                             />
                             <Route exact path={"/basket"}
                                    render={() => <Basket someShit={someShit} setSomeShit={setSomeShit}/>}

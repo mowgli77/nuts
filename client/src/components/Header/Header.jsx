@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, {useEffect} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import PermPhoneMsgIcon from "@material-ui/icons/PermPhoneMsg";

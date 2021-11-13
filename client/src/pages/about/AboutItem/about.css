@@ -44,3 +44,15 @@
 .about_item__buttons button {
     padding: 15px 60px;
 }
+
+@media (max-width: 767px) {
+    .about_item_title {
+        margin-top: 80px;
+        font-size: 2rem;
+    }
+    .about_item_content {
+        margin-top: -20px;
+        grid-template: 300px 1fr/1fr;
+        grid-row-gap: 5px;
+    }
+}
