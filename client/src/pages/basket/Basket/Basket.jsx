@@ -76,7 +76,7 @@ const Basket = ({someShit, setSomeShit}) => {
                     <div>всього</div>
                 </div>
                 <div className="basket_content">
-                    {!isPurchases ? <h2>Ваша корзина пока пуста</h2>
+                    {!isPurchases ? <h2>Ваша корзина поки пуста</h2>
                         : items.map(item => <div>
                             <BasketItem item={item} someShit={someShit} setSomeShit={setSomeShit}/>
                         </div>)

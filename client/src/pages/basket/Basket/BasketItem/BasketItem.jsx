@@ -4,6 +4,7 @@ import AddBox from "@material-ui/icons/AddBox";
 import IndeterminateCheckBox from "@material-ui/icons/IndeterminateCheckBox";
 import Cancel from "@material-ui/icons/Cancel";
 import {swalWithCustom} from "../../../../utils/swal/swalWithCustom";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -37,6 +38,7 @@ export const BasketItem = ({item, someShit, setSomeShit}) => {
                 points: item.points,
                 count: actualCounter,
                 total: item.price * actualCounter,
+                anchorr: item.anchorr
             }
         };
         localStorage.setItem('basket', JSON.stringify(items));
@@ -84,9 +86,13 @@ export const BasketItem = ({item, someShit, setSomeShit}) => {
     return (
         <div className={'basket_item'}>
             <div className="basket_item__image">
-                <img src={item.image} alt="image"/>
+                <NavLink to={`/about/${item.anchorr}`}>
+                    <img src={item.image} alt="image"/>
+                </NavLink>
             </div>
-            <div className={'basket_item__name'}>{item.name}</div>
+            <NavLink to={`/about/${item.anchorr}`}>
+                <div className={'basket_item__name'}>{item.name}</div>
+            </NavLink>
             <div>{Number(item.price).toFixed(2)} грн / {item.points}</div>
             <div className='basket_item__counter'>
                 <IconButton className={iconButton}

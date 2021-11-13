@@ -63,6 +63,7 @@ export const addItemToBasket = (item, someShit, setSomeShit) => {
             points: item.points,
             count: 1,
             total: item.price,
+            anchorr: item.anchorr
         }
     };
     localStorage.setItem('basket', JSON.stringify(items));
