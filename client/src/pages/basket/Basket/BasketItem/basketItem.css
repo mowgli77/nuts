@@ -12,8 +12,8 @@
     border-radius: 8px;
     background-color: #cee3e3;
     margin: 10px 5px 0 5px;
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 500;
 }
 .basket_item:hover {
     box-shadow: -11px 9px 18px rgb(96, 55, 5);

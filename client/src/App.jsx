@@ -46,8 +46,8 @@ function App() {
         }
     };
 
-    const getItemForAboutPage = (item) => {
-        console.log(item);
+    const getItemForAboutPage = (anchorr) => {
+        const item = companies.find(item => item.anchorr && item.anchorr === anchorr);
         setItem(item);
     };
 
@@ -62,11 +62,14 @@ function App() {
                                                           searchText={searchText}
                                                           setSomeShit={setSomeShit}
                                                           someShit={someShit}
-                                                          getItemForAboutPage={getItemForAboutPage}
                                        />}
                             />
-                            <Route exact path={"/about/:anchorr"}
-                                   render={() => <AboutItem item={item} someShit={someShit} setSomeShit={setSomeShit}/>}
+                            <Route exact path={"/about/:anchorr?"}
+                                   render={() => <AboutItem
+                                       item={item}
+                                       getItemForAboutPage={getItemForAboutPage}
+                                       someShit={someShit}
+                                       setSomeShit={setSomeShit}/>}
                             />
                             <Route exact path={"/basket"}
                                    render={() => <Basket someShit={someShit} setSomeShit={setSomeShit}/>}

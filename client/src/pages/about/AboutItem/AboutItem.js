@@ -1,10 +1,16 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React, {useEffect} from "react";
+import {NavLink, useParams} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {addItemToBasket} from "../../../utils/helpers";
 
-const AboutItem = ({item = {}, someShit, setSomeShit}) => {
+const AboutItem = ({ item = {}, someShit, setSomeShit, getItemForAboutPage }) => {
+
+    const { anchorr } = useParams();
+
+    useEffect(() => {
+        getItemForAboutPage(anchorr)
+    }, [anchorr])
 
     return (
         <div className='about_item'>
@@ -15,7 +21,7 @@ const AboutItem = ({item = {}, someShit, setSomeShit}) => {
                             size='large'
                             color='secondary'
                     >
-                        Go Back
+                        До списку товарів
                     </Button>
                 </NavLink>
             </div>

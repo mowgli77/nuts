@@ -50,6 +50,7 @@
     /*justify-content: center;*/
     /*align-items: center;*/
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     text-align: center;
     overflow: hidden;
@@ -68,6 +69,12 @@
     border-top: solid 1px gray;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
+}
+.companies-card__label-name {
+    align-self: flex-start;
+}
+.companies-card__label-price {
+    align-self: flex-end;
 }
 .companies-card button {
     position: absolute;

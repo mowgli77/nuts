@@ -69,6 +69,11 @@ const AdminPanel = ({companies, fetchCompanies}) => {
                 fetchCompanies()
             }
         } catch (e) {
+            swalWithCustom.fire({
+                text: 'Товар не збережено, перевірте правильність заповнення полів форми !!!',
+                icon: 'warning',
+                showConfirmButton: true
+            });
         }
     }
 

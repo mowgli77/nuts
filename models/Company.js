@@ -7,7 +7,7 @@ const schema = new Schema({
     name: { type: String, required: true },
     price: { type: String, required: true },
     points: { type: String, required: true },
-    anchorr: { type: String, default: null },
+    anchorr: { type: String, required: true },
     description: { type: String, default: null },
     addFields: { type: Object, default: null }
 })

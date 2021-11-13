@@ -63,7 +63,7 @@ const UpdateCompanyModal = ({   onCancel,
                 addFields,
                 id: company._id
             });
-            onCancel();
+            onCancel(data);
             if (data.status === 'success') {
                 swalWithCustom.fire({
                     text: 'Congratulation. You updated the item !!!',
@@ -73,7 +73,13 @@ const UpdateCompanyModal = ({   onCancel,
                 });
                 fetchCompanies();
             }
-        } catch (e) { }
+        } catch (e) {
+            swalWithCustom.fire({
+                text: 'Товар не змінено, перевірте правильність заповнення полів форми !!!',
+                icon: 'warning',
+                showConfirmButton: true
+            });
+        }
     };
 
     const initFieldsCount = company.addFields ? Object.keys(company.addFields) : [];

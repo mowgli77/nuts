@@ -2,7 +2,7 @@ import React from 'react'
 import Header from "../../../components/Header/Header";
 import CompaniesList from "../CompamiesList/CompaniesList";
 
-const Content = ({ searchText, companies, someShit, setSomeShit, getItemForAboutPage}) => {
+const Content = ({ searchText, companies, someShit, setSomeShit }) => {
 
     return (
         <div>
@@ -11,7 +11,6 @@ const Content = ({ searchText, companies, someShit, setSomeShit, getItemForAbout
                 <CompaniesList companies={companies}
                                someShit={someShit}
                                setSomeShit={setSomeShit}
-                               getItemForAboutPage={getItemForAboutPage}
                                />
             </div>
         </div>

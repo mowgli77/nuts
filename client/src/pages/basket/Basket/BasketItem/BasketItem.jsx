@@ -3,6 +3,7 @@ import {IconButton, makeStyles} from "@material-ui/core";
 import AddBox from "@material-ui/icons/AddBox";
 import IndeterminateCheckBox from "@material-ui/icons/IndeterminateCheckBox";
 import Cancel from "@material-ui/icons/Cancel";
+import {swalWithCustom} from "../../../../utils/swal/swalWithCustom";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
@@ -51,6 +52,28 @@ export const BasketItem = ({item, someShit, setSomeShit}) => {
         setSomeShit(!someShit);
     }
 
+    const removeItemHandler = () => {
+        swalWithCustom
+            .fire({
+                text: 'Ви впевнені, що бажаєте видалити даний товар із корзини?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Так',
+                cancelButtonText: 'Ні'
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    removeItemFromBasket();
+                    swalWithCustom.fire({
+                        text: 'Товар успішно видалений!',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            });
+    };
+
     const countHandler = (value) => {
         const nextCounter = counter + value;
         const actualCounter = nextCounter === 0 ? 1 : nextCounter;
@@ -78,7 +101,7 @@ export const BasketItem = ({item, someShit, setSomeShit}) => {
                 </IconButton>
             </div>
             <div>{Number(item.total).toFixed(2)} грн</div>
-            <IconButton className={iconButton} onClick={removeItemFromBasket}>
+            <IconButton className={iconButton} onClick={removeItemHandler}>
                 <Cancel className={iconDecrease}/>
             </IconButton>
         </div>

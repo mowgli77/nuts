@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
-import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
+import PermPhoneMsgIcon from "@material-ui/icons/PermPhoneMsg";
 import {IconButton, makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,6 +14,15 @@ const useStyles = makeStyles((theme) => ({
             fontSize: 50,
             color: '#bdb5b5',
         },
+        phoneIconButton: {
+            position: 'absolute',
+            minWidth: 40,
+            backgroundColor: 'rgba(0,0,0,0.4)',
+        },
+        phoneIcon: {
+            fontSize: 40,
+            color: '#c7ec7c',
+        }
     })
 )
 
@@ -21,7 +30,7 @@ const Header = ({searchText}) => {
 
     // const [inputValue, setInputValue] = useState(anc);
 
-    const {headerIcon, basketIcon} = useStyles()
+    const {phoneIcon, headerIcon, basketIcon} = useStyles()
 
     const location = useLocation();
 
@@ -42,6 +51,15 @@ const Header = ({searchText}) => {
     //     }
     // }, []);
 
+    useEffect(() => {
+        return () => {
+            searchText({currentTarget: {
+                value: ''
+                }
+            });
+        }
+    }, []);
+
 
     useEffect(() => {
         const hash = location.hash
@@ -57,12 +75,15 @@ const Header = ({searchText}) => {
         <>
             <div className={"header__top"}>
                 <div className={"header__phone"}>
-                    <a href={'tel:+380631234567'}>
-                        +38 (063) 123 45 67
+                    <a href={'tel:+380730505563'}>
+                        <IconButton className={headerIcon}>
+                            <PermPhoneMsgIcon className={phoneIcon}/>
+                        </IconButton>
+                        <div className="header__phone_number">+380 73 050 55 63</div>
                     </a>
                 </div>
                 <div className={"header__search"}>
-                    <input placeholder={'Поиск товаров'} type={'text'} onKeyUp={searchText}/>
+                    <input placeholder={'Пошук товарів'} type={'search'} onKeyUp={searchText}/>
                     <div className={"header__icon"}>
                         <div className={"header__icon_fixed"}>
                         <span className={"header__inbasket"}>
@@ -79,8 +100,15 @@ const Header = ({searchText}) => {
             </div>
             <header className="header header__center">
                 <div className={"header__title"}>
-                    Пожалуйте к нам в гости по адресу: Киев, ул. Такаято, 666,
-                    или мы доставим Вам по Киеву или в любую другую точку Украины
+                    Завітайте до нас за адресою:
+                    <a href="https://maps.app.goo.gl/m7H8jk5311XCQxrT9" target="_blank"> вул. Героїв Дніпра, 51, Київ,
+                        02000 (дивитись на карті) </a>
+                    або ми доставимо Вам товари по Києву си у будь-яку іншу точку України
+                    <div className="header__delivery">
+                        <NavLink to="/delivery">
+                            Ознайомитись з умовами оплати та доставки
+                        </NavLink>
+                    </div>
                 </div>
             </header>
         </>

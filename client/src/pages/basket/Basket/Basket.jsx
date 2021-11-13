@@ -4,6 +4,7 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {NavLink} from "react-router-dom";
 import React, {useState} from "react";
 import {OrderModal} from "../../../components/modals/OrderModal/OrderModal";
+import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
 
 
 const Basket = ({someShit, setSomeShit}) => {
@@ -21,6 +22,28 @@ const Basket = ({someShit, setSomeShit}) => {
         localStorage.removeItem('basket')
         localStorage.removeItem('items')
         setSomeShit(!someShit)
+    };
+
+    const clearBasketrHandler = () => {
+        swalWithCustom
+            .fire({
+                text: 'Ви впевнені, що бажаєте очистити корзину?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Так',
+                cancelButtonText: 'Ні'
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    clearBasket();
+                    swalWithCustom.fire({
+                        text: 'Корзина успішно очищена!',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            });
     };
 
     const total = items.reduce((result, item) => result + Number(item.total), 0).toFixed(2);
@@ -41,7 +64,7 @@ const Basket = ({someShit, setSomeShit}) => {
                                 size='large'
                                 color='secondary'
                         >
-                            Go Back
+                            До списку товарів
                         </Button>
                     </NavLink>
                 </div>
@@ -66,9 +89,9 @@ const Basket = ({someShit, setSomeShit}) => {
                     </div>
                     <div className="basket_buttons">
                         <Button variant='contained' color='primary' onClick={() => setOrderModalOpen(true)}>
-                            Make Order
+                            Оформити замовлення
                         </Button>
-                        <Button variant='contained' color='secondary' onClick={clearBasket}>Clear basket</Button>
+                        <Button variant='contained' color='secondary' onClick={clearBasketrHandler}>Очистити корзину</Button>
                     </div>
                 </div>
             </div>

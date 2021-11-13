@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import CompaniesCard from "../CompaniesCard/CompaniesCard";
 
-const CompaniesList = ({companies, someShit, setSomeShit, getItemForAboutPage}) => {
+const CompaniesList = ({ companies, someShit, setSomeShit }) => {
     const [sortItems, setSortItems] = useState(companies)
     const [priceMode, setPriceMode] = useState('')
     const [nameMode, setNameMode] = useState('')
@@ -59,7 +59,6 @@ const CompaniesList = ({companies, someShit, setSomeShit, getItemForAboutPage}) 
                                                          company={company}
                                                          someShit={someShit}
                                                          setSomeShit={setSomeShit}
-                                                         setItem={() => getItemForAboutPage(company)}
                 />)}
             </div>
         </>
