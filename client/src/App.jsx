@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react'
 import './App.css'
 import Content from "./pages/main/Content/Content"
 import Auth from "./pages/admin/Auth/Auth"
-import {BrowserRouter, Route, Switch} from "react-router-dom"
+import {BrowserRouter, Route, Switch, useHistory, useLocation, useParams, useRouteMatch} from "react-router-dom"
 import {useHttp} from "./hooks/http.hook"
 import AdminPanel from "./pages/admin/AdminPanel/AdminPanel"
 import AboutItem from "./pages/about/AboutItem/AboutItem";
@@ -10,9 +10,10 @@ import Basket from "./pages/basket/Basket/Basket";
 import {AdminBasket} from "./pages/admin/AdminPanel/AdminBasket/AdminBasket";
 import {AdminBasketContextProvider} from "./context/AdminBasketContext";
 import Delivery from "./pages/delivery/Delivery/Delivery";
+import BasketButton from "./components/BasketButton/BasketButton";
 
 
-let fetchedCompanies = []
+let fetchedCompanies = [];
 
 function App() {
 
@@ -22,15 +23,17 @@ function App() {
     const [pageY, setPageY] = useState(0);
     const {request} = useHttp();
 
+    const { pathname } = useLocation();
+
     const fetchCompanies = useCallback(async () => {
         const data = await request('/api/companies')
         fetchedCompanies = data
         setCompanies(data)
-    }, [request])
+    }, [request]);
 
     useEffect(() => {
-        fetchCompanies()
-    }, [fetchCompanies])
+        fetchCompanies();
+    }, [fetchCompanies]);
 
     const searchText = (e) => {
         let text = e.currentTarget.value.toUpperCase();
@@ -53,50 +56,55 @@ function App() {
         setItem(item);
     };
 
+    const handleGoToBasket = () => {
+        if (pathname === '/') setPageY(window.pageYOffset);
+    };
+
     return (
         <div>
-            <BrowserRouter>
-                <AdminBasketContextProvider>
-                    <div className={'app'}>
-                        <Switch>
-                            <Route exact path={"/"}
-                                   render={() => <Content companies={companies}
-                                                          searchText={searchText}
-                                                          pageY={pageY}
-                                                          setPageY={setPageY}
+            <AdminBasketContextProvider>
+                <div className={'app'}>
+                    {
+                       !pathname.includes('basket') && <BasketButton handleGoToBasket={handleGoToBasket}/>
+                    }
+                    <Switch>
+                        <Route exact path={"/"}
+                               render={() => <Content companies={companies}
+                                                      searchText={searchText}
+                                                      pageY={pageY}
+                                                      handleGoToBasket={handleGoToBasket}
+                                                      setSomeShit={setSomeShit}
+                                                      someShit={someShit}
+                               />}
+                        />
+                        <Route exact path={"/about/:anchorr?"}
+                               render={() => <AboutItem
+                                   item={item}
+                                   getItemForAboutPage={getItemForAboutPage}
+                                   someShit={someShit}
+                                   setSomeShit={setSomeShit}/>}
+                        />
+                        <Route exact path={"/delivery"}
+                               render={() => <Delivery/>}
+                        />
+                        <Route exact path={"/basket"}
+                               render={() => <Basket someShit={someShit} setSomeShit={setSomeShit}/>}
+                        />
+                        <Route exact path={"/admin"}
+                               render={() => <Auth/>}
+                        />
+                        <Route exact path={"/admin/panel"}
+                               render={() => <AdminPanel companies={companies} fetchCompanies={fetchCompanies}/>}
+                        />
+                        <Route exact path={"/admin/panel/admin_basket"}
+                               render={() => <AdminBasket someShit={someShit}
                                                           setSomeShit={setSomeShit}
-                                                          someShit={someShit}
-                                       />}
-                            />
-                            <Route exact path={"/about/:anchorr?"}
-                                   render={() => <AboutItem
-                                       item={item}
-                                       getItemForAboutPage={getItemForAboutPage}
-                                       someShit={someShit}
-                                       setSomeShit={setSomeShit}/>}
-                            />
-                            <Route exact path={"/delivery"}
-                                   render={() => <Delivery />}
-                            />
-                            <Route exact path={"/basket"}
-                                   render={() => <Basket someShit={someShit} setSomeShit={setSomeShit}/>}
-                            />
-                            <Route exact path={"/admin"}
-                                   render={() => <Auth/>}
-                            />
-                            <Route exact path={"/admin/panel"}
-                                   render={() => <AdminPanel companies={companies} fetchCompanies={fetchCompanies}/>}
-                            />
-                            <Route exact path={"/admin/panel/admin_basket"}
-                                   render={() => <AdminBasket someShit={someShit}
-                                                              setSomeShit={setSomeShit}
-                                                              companies={companies}
-                                   />}
-                            />
-                        </Switch>
-                    </div>
-                </AdminBasketContextProvider>
-            </BrowserRouter>
+                                                          companies={companies}
+                               />}
+                        />
+                    </Switch>
+                </div>
+            </AdminBasketContextProvider>
         </div>
     )
 }

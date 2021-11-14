@@ -1,21 +1,10 @@
 import React, {useEffect} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
-import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import PermPhoneMsgIcon from "@material-ui/icons/PermPhoneMsg";
 import {IconButton, makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-        headerIcon: {
-            minWidth: 50,
-            marginLeft: 30,
-            backgroundColor: 'rgba(0,0,0,0.4)',
-        },
-        basketIcon: {
-            fontSize: 50,
-            color: '#bdb5b5',
-        },
         phoneIconButton: {
-            position: 'absolute',
             minWidth: 25,
             backgroundColor: 'rgba(0,0,0,0.4)',
         },
@@ -24,20 +13,15 @@ const useStyles = makeStyles((theme) => ({
             color: '#c7ec7c',
         }
     })
-)
+);
 
-const Header = ({searchText, setPageY}) => {
+const Header = ({searchText}) => {
 
     // const [inputValue, setInputValue] = useState(anc);
 
-    const {phoneIcon, headerIcon, basketIcon} = useStyles()
+    const { phoneIcon, phoneIconButton } = useStyles()
 
     const location = useLocation();
-
-    const itemsCount = localStorage.getItem('items')
-
-    useEffect(() => {
-    }, [itemsCount])
 
     // useEffect(() => {
     //     if (location.hash) {
@@ -70,16 +54,12 @@ const Header = ({searchText, setPageY}) => {
         }, 300)
     }, [location.hash]);
 
-    const handleGoToBasket = () => {
-        setPageY(window.pageYOffset);
-    };
-
     return (
         <>
             <div className={"header__top"}>
                 <div className={"header__phone"}>
                     <a href={'tel:+380730505563'}>
-                        <IconButton className={headerIcon}>
+                        <IconButton className={phoneIconButton}>
                             <PermPhoneMsgIcon className={phoneIcon}/>
                         </IconButton>
                         <div className="header__phone_number">+380 73 050 55 63</div>
@@ -87,18 +67,6 @@ const Header = ({searchText, setPageY}) => {
                 </div>
                 <div className={"header__search"}>
                     <input placeholder={'Пошук товарів'} type={'search'} onKeyUp={searchText}/>
-                    <div className={"header__icon"}>
-                        <div className={"header__icon_fixed"}>
-                        <span className={"header__inbasket"}>
-                            {itemsCount ? itemsCount : ''}
-                        </span>
-                            <NavLink to={'/basket'} onClick={handleGoToBasket}>
-                                <IconButton className={headerIcon}>
-                                    <ShoppingCart className={basketIcon}/>
-                                </IconButton>
-                            </NavLink>
-                        </div>
-                    </div>
                 </div>
             </div>
             <header className="header header__center">

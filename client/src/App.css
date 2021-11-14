@@ -1,5 +1,6 @@
 @import url('http://fonts.cdnfonts.com/css/coca-cola-ii');
 @import url('./components/Header/header.css');
+@import url('./components/BasketButton/basketButton.css');
 @import url('./pages/admin/AdminPanel/adminPanel.css');
 @import url('./pages/orders/orders.css');
 @import url('./pages/orders/OrderItem/orderItem.css');
@@ -34,6 +35,7 @@ body {
 
 .app {
     flex: 1 1 auto;
+    position: relative;
     max-width: 1120px;
     margin: 0 auto;
 }

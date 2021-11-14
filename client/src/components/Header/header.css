@@ -79,30 +79,6 @@
     padding: 10px;
     border-radius: 20px;
 }
-.header__icon {
-    width: 50px;
-    position: relative;
-}
-.header__icon_fixed {
-    position: fixed;
-    top: 5px;
-    z-index: 25;
-}
-.header__inbasket {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 7px;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: #d7cfcf;
-    text-indent: 8px;
-    font-weight: bold;
-    color: black;
-    z-index: 26;
-}
-
 
 @media (max-width: 1200px) {
     .header {
@@ -140,8 +116,7 @@
         margin: 10px 10px 10px 0;
     }
     .header__icon {
-        margin-left: -25px;
-        margin-right: 10px;
+        width: 110px;
     }
     .header {
         margin-top: 20px;
@@ -154,7 +129,7 @@
         margin-left: 10px;
     }
     .header__phone {
-        margin-left: -60px;
+        margin-left: -40px;
     }
     .header__phone_number {
         margin-top: 10px;

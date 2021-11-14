@@ -2,11 +2,11 @@ import React from 'react'
 import {NavLink} from "react-router-dom";
 import {addItemToBasket} from "../../../utils/helpers";
 
-const CompaniesCard = ({ company, someShit, setSomeShit }) => {
+const CompaniesCard = ({ company, handleGoToBasket, someShit, setSomeShit }) => {
 
     return (
         <div id={company.anchorr} className={"companies-card"}>
-            <NavLink to={`/about/${company.anchorr}`}>
+            <NavLink to={`/about/${company.anchorr}`} onClick={handleGoToBasket}>
                 <div className={`companies-card__image ${!company.description && 'boss'}`}>
                     <img src={company.image} alt='image'/>
                 </div>

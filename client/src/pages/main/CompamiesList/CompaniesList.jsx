@@ -1,14 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import CompaniesCard from "../CompaniesCard/CompaniesCard";
 
-const CompaniesList = ({ companies, pageY, someShit, setSomeShit }) => {
+const CompaniesList = ({ companies, pageY, handleGoToBasket, someShit, setSomeShit }) => {
     const [sortItems, setSortItems] = useState(companies)
     const [priceMode, setPriceMode] = useState('')
     const [nameMode, setNameMode] = useState('')
-
-    // const handleGoBack = () => {
-    //     window.scrollTo(0, pageY);
-    // };
 
     useEffect(() => {
         setSortItems(companies);
@@ -66,6 +62,7 @@ const CompaniesList = ({ companies, pageY, someShit, setSomeShit }) => {
             <div className={sortItems.length < 3 ? 'companies-list-less-then-3' : 'companies-list'}>
                 {sortItems.map(company => <CompaniesCard key={company.id}
                                                          company={company}
+                                                         handleGoToBasket={handleGoToBasket}
                                                          someShit={someShit}
                                                          setSomeShit={setSomeShit}
                 />)}
