@@ -1,13 +1,22 @@
 import React, {useEffect, useState} from 'react'
 import CompaniesCard from "../CompaniesCard/CompaniesCard";
 
-const CompaniesList = ({ companies, someShit, setSomeShit }) => {
+const CompaniesList = ({ companies, pageY, someShit, setSomeShit }) => {
     const [sortItems, setSortItems] = useState(companies)
     const [priceMode, setPriceMode] = useState('')
     const [nameMode, setNameMode] = useState('')
+
+    // const handleGoBack = () => {
+    //     window.scrollTo(0, pageY);
+    // };
+
     useEffect(() => {
-        setSortItems(companies)
-    }, [companies.length, companies[0]?.name])
+        setSortItems(companies);
+    }, [companies.length, companies[0]?.name]);
+
+    useEffect(() => {
+        window.scrollTo(0, pageY);
+    }, [pageY]);
 
     const sortByPrice = (mode) => setSortItems(prev => {
         setPriceMode(mode)

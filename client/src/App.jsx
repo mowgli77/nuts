@@ -19,6 +19,7 @@ function App() {
     const [companies, setCompanies] = useState(fetchedCompanies);
     const [item, setItem] = useState(fetchedCompanies);
     const [someShit, setSomeShit] = useState(false);
+    const [pageY, setPageY] = useState(0);
     const {request} = useHttp();
 
     const fetchCompanies = useCallback(async () => {
@@ -61,6 +62,8 @@ function App() {
                             <Route exact path={"/"}
                                    render={() => <Content companies={companies}
                                                           searchText={searchText}
+                                                          pageY={pageY}
+                                                          setPageY={setPageY}
                                                           setSomeShit={setSomeShit}
                                                           someShit={someShit}
                                        />}

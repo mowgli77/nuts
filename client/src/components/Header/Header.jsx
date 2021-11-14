@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     })
 )
 
-const Header = ({searchText}) => {
+const Header = ({searchText, setPageY}) => {
 
     // const [inputValue, setInputValue] = useState(anc);
 
@@ -70,6 +70,9 @@ const Header = ({searchText}) => {
         }, 300)
     }, [location.hash]);
 
+    const handleGoToBasket = () => {
+        setPageY(window.pageYOffset);
+    };
 
     return (
         <>
@@ -89,7 +92,7 @@ const Header = ({searchText}) => {
                         <span className={"header__inbasket"}>
                             {itemsCount ? itemsCount : ''}
                         </span>
-                            <NavLink to={'/basket'}>
+                            <NavLink to={'/basket'} onClick={handleGoToBasket}>
                                 <IconButton className={headerIcon}>
                                     <ShoppingCart className={basketIcon}/>
                                 </IconButton>

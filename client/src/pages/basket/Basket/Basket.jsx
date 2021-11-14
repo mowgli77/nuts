@@ -2,14 +2,18 @@ import {BasketItem} from "./BasketItem/BasketItem";
 import {Button} from "@material-ui/core";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import {NavLink} from "react-router-dom";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {OrderModal} from "../../../components/modals/OrderModal/OrderModal";
 import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
 
 
 const Basket = ({someShit, setSomeShit}) => {
 
-    const [isOrderModalOpen, setOrderModalOpen] = useState(false)
+    const [isOrderModalOpen, setOrderModalOpen] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const getItems = () => {
         const items = localStorage.getItem('basket')
