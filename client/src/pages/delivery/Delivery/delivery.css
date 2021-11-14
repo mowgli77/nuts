@@ -21,3 +21,19 @@
     font-size: 1.25rem;
     font-weight: 700;
 }
+
+@media (max-width: 767px) {
+    .delivery {
+        margin-top: 75px;
+    }
+    .delivery_title{
+        font-size: 1.25rem;
+    }
+    .delivery_content {
+        margin: 15px;
+        padding: 5px 10px;
+    }
+    .delivery__section_title {
+        font-size: 1rem;
+    }
+}
