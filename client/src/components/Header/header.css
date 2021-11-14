@@ -154,8 +154,12 @@
         margin-left: 10px;
     }
     .header__phone {
-        margin-left: -45px;
+        margin-left: -60px;
     }
+    .header__phone_number {
+        margin-top: 10px;
+    }
+
     .header__search {
         justify-content: normal;
         top: -5px;

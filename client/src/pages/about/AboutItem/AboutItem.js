@@ -15,7 +15,7 @@ const AboutItem = ({ item = {}, someShit, setSomeShit, getItemForAboutPage }) =>
     return (
         <div className='about_item'>
             <div className='basket_go-back-button'>
-                <NavLink to={'/'}>
+                <NavLink to={`/#${anchorr}`}>
                     <Button startIcon={<ArrowBackIos/>}
                             variant='contained'
                             size='large'
