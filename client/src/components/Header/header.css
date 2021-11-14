@@ -71,14 +71,16 @@
 }
 .header__search {
     display: flex;
+    position: relative;
     justify-content: space-between;
     z-index: 125;
 }
 .header__search input {
     width: 400px;
-    margin-top: 13px;
-    padding: 10px;
-    border-radius: 20px;
+    height: 40px;
+    margin-top: 10px;
+    padding: 0 15px;
+    border-radius: 25px;
 }
 
 @media (max-width: 1200px) {

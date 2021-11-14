@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {NavLink, useLocation} from "react-router-dom";
 import PermPhoneMsgIcon from "@material-ui/icons/PermPhoneMsg";
 import {IconButton, makeStyles} from "@material-ui/core";
+import Cancel from "@material-ui/icons/Cancel";
 
 const useStyles = makeStyles((theme) => ({
         phoneIconButton: {
@@ -11,15 +12,24 @@ const useStyles = makeStyles((theme) => ({
         phoneIcon: {
             fontSize: 25,
             color: '#c7ec7c',
+        },
+        iconCloseButton: {
+            position: 'absolute',
+            right: 0,
+            minWidth: 35
+        },
+        closeIcon: {
+            fontSize: 40,
+            color: 'red',
         }
     })
 );
 
 const Header = ({searchText}) => {
 
-    // const [inputValue, setInputValue] = useState(anc);
+    const [inputValue, setInputValue] = useState('');
 
-    const { phoneIcon, phoneIconButton } = useStyles()
+    const {phoneIcon, phoneIconButton, iconCloseButton, closeIcon} = useStyles()
 
     const location = useLocation();
 
@@ -35,12 +45,18 @@ const Header = ({searchText}) => {
     //     }
     // }, []);
 
+    const clearSearchInput = () => {
+        searchText({
+            currentTarget: {
+                value: ''
+            }
+        });
+        setInputValue('');
+    }
+
     useEffect(() => {
         return () => {
-            searchText({currentTarget: {
-                value: ''
-                }
-            });
+            clearSearchInput();
         }
     }, []);
 
@@ -66,7 +82,16 @@ const Header = ({searchText}) => {
                     </a>
                 </div>
                 <div className={"header__search"}>
-                    <input placeholder={'Пошук товарів'} type={'search'} onKeyUp={searchText}/>
+                    <input
+                        placeholder={'Пошук товарів'}
+                        type={'text'}
+                        onKeyUp={searchText}
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.currentTarget.value)}
+                    />
+                    <IconButton className={iconCloseButton} onClick={clearSearchInput}>
+                        <Cancel className={closeIcon}/>
+                    </IconButton>
                 </div>
             </div>
             <header className="header header__center">
