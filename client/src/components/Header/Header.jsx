@@ -7,6 +7,7 @@ import Cancel from "@material-ui/icons/Cancel";
 const useStyles = makeStyles((theme) => ({
         phoneIconButton: {
             minWidth: 25,
+            maxHeight: 50,
             backgroundColor: 'rgba(0,0,0,0.4)',
         },
         phoneIcon: {
@@ -75,9 +76,12 @@ const Header = ({searchText}) => {
             <div className={"header__top"}>
                 <div className={"header__phone"}>
                     <a href={'tel:+380730505563'}>
-                        <IconButton className={phoneIconButton}>
-                            <PermPhoneMsgIcon className={phoneIcon}/>
-                        </IconButton>
+                        <div className={"header__phone_icon"}>
+                            <IconButton className={phoneIconButton}>
+                                <PermPhoneMsgIcon className={phoneIcon}/>
+                            </IconButton>
+
+                        </div>
                         <div className="header__phone_number">+380 73 050 55 63</div>
                     </a>
                 </div>

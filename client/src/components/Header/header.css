@@ -136,13 +136,17 @@
         margin-left: 5vw;
     }
     .header__phone_number {
-        margin-top: 10px;
+        margin-top: 55px;
     }
-
+    .header__phone_icon {
+        margin-top: 45px;
+    }
     .header__search {
+        position: fixed;
         justify-content: normal;
         align-self: self-start;
         max-width: 70vw;
+        top: 0;
         left: 5vw;
     }
 }
