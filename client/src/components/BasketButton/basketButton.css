@@ -1,5 +1,5 @@
 .button_basket__icon {
-    width: 85px;
+    width: 75px;
     float: right;
     position: relative;
 }
@@ -12,7 +12,7 @@
     display: block;
     position: absolute;
     right: 0;
-    top: 7px;
+    top: 0;
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -25,6 +25,9 @@
 
 @media (max-width: 767px) {
     .button_basket__icon {
-        width: 110px;
+        margin-right: 35px;
+    }
+    .button_basket__icon_fixed {
+        top: 10px;
     }
 }

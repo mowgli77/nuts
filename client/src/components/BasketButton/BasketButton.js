@@ -6,7 +6,8 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 const useStyles = makeStyles((theme) => ({
         headerIcon: {
             minWidth: 50,
-            marginLeft: 30,
+            maxWidth: 75,
+            marginLeft: 25,
             backgroundColor: 'rgba(0,0,0,0.4)',
         },
         basketIcon: {
