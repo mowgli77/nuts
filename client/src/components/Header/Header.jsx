@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
         },
         iconCloseButton: {
             position: 'absolute',
-            right: 0,
-            minWidth: 35
+            right: -10,
+            minWidth: 40
         },
         closeIcon: {
             fontSize: 40,
@@ -89,9 +89,11 @@ const Header = ({searchText}) => {
                         value={inputValue}
                         onChange={(e) => setInputValue(e.currentTarget.value)}
                     />
-                    <IconButton className={iconCloseButton} onClick={clearSearchInput}>
-                        <Cancel className={closeIcon}/>
-                    </IconButton>
+                    {
+                       inputValue && <IconButton className={iconCloseButton} onClick={clearSearchInput}>
+                            <Cancel className={closeIcon}/>
+                        </IconButton>
+                    }
                 </div>
             </div>
             <header className="header header__center">

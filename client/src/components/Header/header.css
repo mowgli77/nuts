@@ -132,7 +132,8 @@
         margin-left: 10px;
     }
     .header__phone {
-        margin-left: -40px;
+        align-self: self-start;
+        margin-left: 5vw;
     }
     .header__phone_number {
         margin-top: 10px;
@@ -140,10 +141,8 @@
 
     .header__search {
         justify-content: normal;
-        top: -5px;
-        left: 3.5vw;
-    }
-    .header__search input{
+        align-self: self-start;
         max-width: 70vw;
+        left: 5vw;
     }
 }
