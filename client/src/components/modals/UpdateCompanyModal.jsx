@@ -14,23 +14,24 @@ import Close from "@material-ui/icons/Close";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
-            minWidth: 35,
-            marginTop: '-17px',
+            minWidth: 30,
+            marginTop: '-13px',
             float: 'right',
         },
         icon: {
-            fontSize:40,
+            fontSize: 30,
             color: 'red',
         },
     })
 )
 
-const UpdateCompanyModal = ({   onCancel,
+const UpdateCompanyModal = ({
+                                onCancel,
                                 company,
                                 fetchCompanies,
-}) => {
+                            }) => {
 
-    const { request } = useHttp();
+    const {request} = useHttp();
     const {icon, iconButton} = useStyles();
 
     const [form, setForm] = useState({

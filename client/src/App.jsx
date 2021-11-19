@@ -60,12 +60,14 @@ function App() {
         if (pathname === '/') setPageY(window.pageYOffset);
     };
 
+    const showBasket = !pathname.includes('basket') && !pathname.includes('admin');
+
     return (
         <div>
             <AdminBasketContextProvider>
                 <div className={'app'}>
                     {
-                       !pathname.includes('basket') && <BasketButton handleGoToBasket={handleGoToBasket}/>
+                        showBasket && <BasketButton handleGoToBasket={handleGoToBasket}/>
                     }
                     <Switch>
                         <Route exact path={"/"}

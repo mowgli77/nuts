@@ -7,24 +7,25 @@ import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
-            minWidth: 35,
-            marginTop: '-17px',
+            minWidth: 30,
+            marginTop: '-13px',
             float: 'right',
         },
         icon: {
-            fontSize:40,
+            fontSize: 30,
             color: 'red',
         },
     })
 )
 
-export const OrderModal = ({    onCancel,
-                                items,
-                                clearBasket,
-                                total
-                            }) => {
+export const OrderModal = ({
+                               onCancel,
+                               items,
+                               clearBasket,
+                               total
+                           }) => {
 
-    const { request } = useHttp();
+    const {request} = useHttp();
     const {icon, iconButton} = useStyles();
 
     const saveOrderHandler = async (formData) => {
@@ -45,9 +46,9 @@ export const OrderModal = ({    onCancel,
             }
         } catch (e) {
             swalWithCustom.fire({
-                    text: 'На жаль, під час обробки замовлення сталася помилка. Повторіть, будь ласка, відправку форми!',
-                    icon: 'warning'
-                });
+                text: 'На жаль, під час обробки замовлення сталася помилка. Повторіть, будь ласка, відправку форми!',
+                icon: 'warning'
+            });
         }
     };
 
@@ -57,7 +58,7 @@ export const OrderModal = ({    onCancel,
                 text: 'На жаль, Ваша корзина пуста. Додайте спочатку товари, перш, ніж зробити замовлення!',
                 icon: 'warning'
             });
-        return;
+            return;
         }
         saveOrderHandler(formData);
     };

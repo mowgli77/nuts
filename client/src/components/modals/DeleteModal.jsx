@@ -1,9 +1,25 @@
 import React from 'react'
 import {useHttp} from "../../hooks/http.hook"
+import {IconButton, makeStyles} from "@material-ui/core";
+import Close from "@material-ui/icons/Close";
+
+const useStyles = makeStyles((theme) => ({
+        iconButton: {
+            minWidth: 30,
+            marginTop: '-13px',
+            float: 'right',
+        },
+        icon: {
+            fontSize:30,
+            color: 'red',
+        },
+    })
+)
 
 const DeleteModal = ({onCancel, company, fetchCompanies}) => {
 
-    const { request } = useHttp()
+    const { request } = useHttp();
+    const {icon, iconButton} = useStyles();
 
     const deleteCompanyHandler = async () => {
         try {
@@ -22,7 +38,10 @@ const DeleteModal = ({onCancel, company, fetchCompanies}) => {
                 <div className={'modal__header'}>
                     <div className={'modal__title'}>
                         Delete Company
-                        <span onClick={onCancel}>&times;</span>
+                        <IconButton className={iconButton}
+                                    onClick={onCancel}>
+                            <Close className={icon}/>
+                        </IconButton>
                     </div>
                 </div>
                 <div className={'modal__footer'}>

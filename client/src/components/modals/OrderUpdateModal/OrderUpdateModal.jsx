@@ -7,12 +7,12 @@ import {swalWithCustom} from "../../../utils/swal/swalWithCustom";
 
 const useStyles = makeStyles((theme) => ({
         iconButton: {
-            minWidth: 35,
-            marginTop: '-17px',
+            minWidth: 30,
+            marginTop: '-13px',
             float: 'right',
         },
         icon: {
-            fontSize: 40,
+            fontSize: 30,
             color: 'red',
         },
     })
@@ -33,6 +33,7 @@ export const OrderUpdateModal = ({
             const data = await request('/api/orders/update', 'POST', {
                 ...formData,
                 id: order._id,
+                active: order.active,
                 total,
                 items
             });
