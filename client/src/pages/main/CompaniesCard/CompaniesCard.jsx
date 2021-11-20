@@ -15,7 +15,7 @@ const CompaniesCard = ({ company, handleGoToBasket, someShit, setSomeShit }) => 
                 </div>
                 <div className={`companies-card__label`}>
                     <div className="companies-card__label-name">{company.name}</div>
-                    <div className="companies-card__label-price">{Number(company.price).toFixed(2)} грн</div>
+                    <div className="companies-card__label-price">{Number(company.price).toFixed(2)} грн/{company.points}</div>
                 </div>
             </NavLink>
             <button onClick={() => addItemToBasket(company, someShit, setSomeShit)}>Купити</button>
