@@ -26,9 +26,10 @@ function App() {
     const { pathname } = useLocation();
 
     const fetchCompanies = useCallback(async () => {
-        const data = await request('/api/companies')
-        fetchedCompanies = data
-        setCompanies(data)
+        const data = await request('/api/companies');
+        const sortBtArticleData = data.sort((a, b) => a.article > b.article ? 1 : a.article < b.article ? -1 : 0);
+        fetchedCompanies = sortBtArticleData;
+        setCompanies(sortBtArticleData);
     }, [request]);
 
     useEffect(() => {
@@ -37,17 +38,17 @@ function App() {
 
     const searchText = (e) => {
         let text = e.currentTarget.value.toUpperCase();
-        let filterCompaniesN = fetchedCompanies.filter(s => s.name.toUpperCase().includes(text))
+        let filterCompaniesN = fetchedCompanies.filter(s => s.name.toUpperCase().includes(text));
         let filterCompaniesD = fetchedCompanies.filter(s => {
             if (s.description) {
-                return s.description.toUpperCase().includes(text)
+                return s.description.toUpperCase().includes(text);
             }
-        })
-        let filterCompanies = filterCompaniesN.concat(filterCompaniesD)
+        });
+        let filterCompanies = filterCompaniesN.concat(filterCompaniesD);
         if (text.trim().length === 0) {
-            setCompanies(fetchedCompanies)
+            setCompanies(fetchedCompanies);
         } else {
-            setCompanies(filterCompanies)
+            setCompanies(filterCompanies);
         }
     };
 

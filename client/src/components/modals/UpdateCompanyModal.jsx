@@ -40,6 +40,7 @@ const UpdateCompanyModal = ({
         price: company.price,
         points: company.points,
         anchorr: company.anchorr,
+        article: company.article,
         description: company.description,
     });
 

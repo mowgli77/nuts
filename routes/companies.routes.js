@@ -19,8 +19,8 @@ router.get('/',
 router.post('/save',
     async (req, res) => {
         try {
-            const { image, name, price, points, anchorr, description, addFields } = req.body
-            const company = new Company({ image, name, price, points, anchorr, description, addFields })
+            const { image, name, price, points, anchorr, article, description, addFields } = req.body
+            const company = new Company({ image, name, price, points, anchorr, article, description, addFields })
             // const company = new Company;
             // company.data = JSON.stringify(req.body);
             await company.save()
@@ -56,10 +56,10 @@ router.delete('/delete',
 router.post('/update',
     async (req, res) => {
         try {
-            const { id, image, name, price, points, anchorr, description, addFields } = req.body
+            const { id, image, name, price, points, anchorr, article, description, addFields } = req.body
             await Company.findByIdAndUpdate(
                 id,
-                { $set: { image, name, price, points, anchorr, description, addFields } },
+                { $set: { image, name, price, points, anchorr, article, description, addFields } },
                 { new: true }
                 )
             res.status(200).json({

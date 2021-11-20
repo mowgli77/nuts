@@ -51,6 +51,13 @@ export const FormFields = ({form, formHandler, fileSelectorHandler}) => {
                    value={form.anchorr}
                    onChange={formHandler}
             />
+            <input placeholder="Enter an article"
+                   id="article"
+                   type="text"
+                   name={"article"}
+                   value={form.article}
+                   onChange={formHandler}
+            />
             <textarea placeholder="Enter a description"
                       id="description"
                       name="description"
