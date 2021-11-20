@@ -6,7 +6,7 @@
     cursor: pointer;
     /*background: rgba(255, 255, 255, 0.9);*/
     background: #286800;
-    border-radius: 20px;
+    border-radius: 8px;
     box-shadow: -11px 9px 18px rgb(18, 45, 7);
     padding: 1px;
     position: relative;
@@ -20,8 +20,8 @@
     overflow: hidden;
     position: relative;
     padding: 0 0 70% 0;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
     /*border-radius: 20px;*/
 
 }
