@@ -9,7 +9,7 @@
     background-color: rgba(255, 255, 255, .85);
     margin-top: 25px;
     z-index: 1;
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 10px 60px;
     box-shadow: -11px 9px 18px rgb(18, 45, 7);
 }
