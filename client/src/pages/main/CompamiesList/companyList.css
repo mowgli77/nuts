@@ -1,15 +1,13 @@
 .companies__sort {
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     color: whitesmoke;
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: 500;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-}
-.companies__sort span {
-    margin-right: 30px;
+    text-shadow: 1px 1px 2px black;
 }
 .companies__sort_active {
     color: #ff1500;
@@ -31,5 +29,11 @@
 @media (max-width: 767px) {
     .companies-list {
         grid-gap: 30px;
+    }
+    .companies__sort {
+        font-size: 1rem;
+    }
+    .companies__sort div {
+        margin-bottom: 10px;
     }
 }

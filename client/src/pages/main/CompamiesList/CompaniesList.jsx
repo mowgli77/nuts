@@ -34,29 +34,29 @@ const CompaniesList = ({ companies, pageY, handleGoToBasket, someShit, setSomeSh
                 <div className={priceMode === 'low' && 'companies__sort_active'}
                       onClick={() => sortByPrice('low')}
                 >
-                    Сначала дешевле
+                    Спочатку дешевші
                 </div>
                 <div className={priceMode === 'high' && 'companies__sort_active'}
                     onClick={() => sortByPrice('high')}
                 >
-                    Сначала дороже
+                    Спочатку дорожчі
                 </div>
                 <div className={nameMode === 'abc' && 'companies__sort_active'}
                     onClick={() => sortByName('abc')}
                 >
-                    Сотрировать от А...
+                    Сортувати від А...
                 </div>
                 <div className={nameMode === 'zyx' && 'companies__sort_active'}
                     onClick={() => sortByName('zyx')}
                 >
-                    Сотрировать от Я...
+                    Сортувати від Я...
                 </div>
                 <div onClick={() => {
                     setSortItems(companies)
                     setNameMode('')
                     setPriceMode('')
                 }}>
-                    Сбросить фильтры
+                    Скинути фільтри
                 </div>
             </div>
             <div className={sortItems.length < 3 ? 'companies-list-less-then-3' : 'companies-list'}>

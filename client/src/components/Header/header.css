@@ -5,8 +5,7 @@
     /*position: fixed;*/
     height: 85px;
     width: 1000px;
-    /*background: #e21717;*/
-    background-color: rgba(255, 255, 255, .85);
+    background-color: #E4D477;
     margin-top: 25px;
     z-index: 1;
     border-radius: 8px;
@@ -34,9 +33,10 @@
     margin-left: 5px;
     font-size: 1.75rem;
     font-weight: 500;
-    color: #1a4101;
+    color: #286800;
+    text-shadow: 1px 1px 2px darkorange;
 }
-.header__phone a:hover {
+.header__phone_number:hover {
     color: darkorange;
 }
 
