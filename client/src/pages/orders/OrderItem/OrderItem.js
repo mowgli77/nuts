@@ -105,7 +105,7 @@ export const OrderItem = ({order, fetchOrders, getItemsAndGoToBasket}) => {
 
     return (
         <div className={'order_item'}>
-            <div>{order.number}</div>
+            <div>{order.orderNum}</div>
             <NavLink className='order_item__link' to='/admin/panel/admin_basket'>
                 <div className='order_item__client' onClick={() => getItemsAndGoToBasket(order._id)}>
                     <div>{order.firstName} {order.lastName}</div>

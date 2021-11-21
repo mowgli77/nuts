@@ -34,6 +34,7 @@ export const OrderUpdateModal = ({
                 ...formData,
                 id: order._id,
                 active: order.active,
+                orderNum: order.orderNum,
                 total,
                 items
             });

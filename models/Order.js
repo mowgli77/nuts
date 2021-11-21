@@ -7,7 +7,8 @@ const schema = new Schema({
     phone: { type: String, required: true },
     total: { type: String, required: true },
     address: { type: String, default: null },
-    active: { type: Boolean, required: true  },
+    orderNum: { type: String, required: true},
+    active: { type: Boolean, required: true },
     items: { type: Array, default: null },
 });
 

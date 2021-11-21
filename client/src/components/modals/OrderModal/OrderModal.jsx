@@ -16,7 +16,9 @@ const useStyles = makeStyles((theme) => ({
             color: 'red',
         },
     })
-)
+);
+
+const INIT_ORDER_NUMBER = '0833';
 
 export const OrderModal = ({
                                onCancel,
@@ -30,9 +32,23 @@ export const OrderModal = ({
 
     const saveOrderHandler = async (formData) => {
         try {
+            let counts = await request('/api/count');
+            if (!counts.length) {
+                await request('/api/count/save', 'POST', {
+                    orderNum: INIT_ORDER_NUMBER
+                });
+                counts = await request('/api/count');
+            }
+            const count = counts[0];
+            const nextOrderNum = String(Number(count.orderNum) + 1);
+            await request('/api/count/update', 'POST', {
+                orderNum: nextOrderNum.length === 3 ? '0' + nextOrderNum : nextOrderNum,
+                id: count._id
+            });
             const data = await request('/api/orders/save', 'POST', {
                 ...formData,
                 active: true,
+                orderNum: count.orderNum,
                 total,
                 items
             });

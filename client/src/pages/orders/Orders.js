@@ -57,7 +57,7 @@ export const Orders = () => {
                 return orders.filter(order => !order.active);
         }
     }
-    const renderOrders = getRenderOrders();
+    const renderOrders = getRenderOrders().reverse();
 
     return (
         <div className={'orders'}>

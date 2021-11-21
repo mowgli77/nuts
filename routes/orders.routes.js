@@ -19,8 +19,8 @@ router.get('/',
 router.post('/save',
     async (req, res) => {
         try {
-            const { firstName, lastName, email, phone, total, address, active, items } = req.body
-            const company = new Order({ firstName, lastName, email, phone, total, active, address, items })
+            const { firstName, lastName, email, phone, total, address, orderNum, active, items } = req.body
+            const company = new Order({ firstName, lastName, email, phone, total, orderNum, active, address, items })
             await company.save()
             res.status(201).json({
                 message: 'Order is successfully added',
@@ -54,10 +54,10 @@ router.delete('/delete',
 router.post('/update',
     async (req, res) => {
         try {
-            const { id, firstName, lastName, email, phone, address, total, active, items } = req.body
+            const { id, firstName, lastName, email, phone, address, total, orderNum, active, items } = req.body
             await Order.findByIdAndUpdate(
                 id,
-                { $set: { firstName, lastName, email, phone, address, total, active, items } },
+                { $set: { firstName, lastName, email, phone, address, total, orderNum, active, items } },
                 { new: true }
                 )
             res.status(200).json({
