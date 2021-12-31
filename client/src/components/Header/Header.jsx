@@ -75,7 +75,7 @@ const Header = ({searchText}) => {
         <>
             <div className={"header__top"}>
                 <div className={"header__phone"}>
-                    <a href={'tel:+380730505563'}>
+                    <a href={'tel:+380638924039'}>
                         <div className={"header__phone_icon"}>
                             <IconButton className={phoneIconButton}>
                                 <PermPhoneMsgIcon className={phoneIcon}/>
