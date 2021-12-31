@@ -82,7 +82,7 @@ const Header = ({searchText}) => {
                             </IconButton>
 
                         </div>
-                        <div className="header__phone_number">+380 73 050 55 63</div>
+                        <div className="header__phone_number">+38 063 892 40 39</div>
                     </a>
                 </div>
                 <div className={"header__search"}>
